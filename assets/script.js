@@ -39,9 +39,10 @@ function getWeather(cityName) {
   function displayWeather(data) {
     const weatherHtml = `
       <h2>${data.name}, ${data.sys.country}</h2>
-      <p>Temperature Now: ${data.main.temp}°C</p>
-      <p>MIN ${data.main.temp_min}°C</p>
-      <p>MAX ${data.main.temp_max}°C</p>
+      <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt"${data.weather[0].description}">
+      <p> ${data.main.temp}°C</p>
+      <p>Min ${data.main.temp_min}°C</p>
+      <p>Max ${data.main.temp_max}°C</p>
 
       <p>Weather: ${data.weather[0].main}</p>
       <p>Description: ${data.weather[0].description}</p>
