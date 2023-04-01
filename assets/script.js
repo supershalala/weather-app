@@ -60,10 +60,9 @@ function getWeather(cityName) {
   }
 
 function get5DayWeather (lat, lon) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric}`
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
    
 
-//  const oneCallApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=metric&appid=${apiKey}`
 
     $.ajax({
         url: apiUrl,
@@ -80,19 +79,46 @@ function get5DayWeather (lat, lon) {
 
 function display5DayWeather(fiveDay) {
 
-const fiveDayHtml = `
-<h2>${fiveDay.list[2].dt_txt}</h2>
-<p>${fiveDay.list[2].weather[0].main}</P>
-<p>${fiveDay.list[1].main.temp}</p>
-<h1>"hello world"</h1>
-
-
-
-
-
+const dayOneHtml = `
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<h2>${fiveDay.list[3].dt_txt}</h2>
+<p>${fiveDay.list[3].weather[0].main}</P>
+<p>${fiveDay.list[3].main.temp}°C</p>
 `;
+$('#day-one').html(dayOneHtml);
+const dayTwoHtml = `
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<h2>${fiveDay.list[3].dt_txt}</h2>
+<p>${fiveDay.list[3].weather[0].main}</P>
+<p>${fiveDay.list[3].main.temp}°C</p>
+`;
+$('#day-two').html(dayTwoHtml);
 
-$('.five-day').html(fiveDayHtml);
+const dayThreeHtml = `
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<h2>${fiveDay.list[3].dt_txt}</h2>
+<p>${fiveDay.list[3].weather[0].main}</P>
+<p>${fiveDay.list[3].main.temp}°C</p>
+`;
+$('#day-three').html(dayThreeHtml);
+
+
+
+const dayFourHtml = `
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<h2>${fiveDay.list[3].dt_txt}</h2>
+<p>${fiveDay.list[3].weather[0].main}</P>
+<p>${fiveDay.list[3].main.temp}°C</p>
+`;
+$('#day-four').html(dayFourHtml);
+
+const dayFiveHtml = `
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<h2>${fiveDay.list[3].dt_txt}</h2>
+<p>${fiveDay.list[3].weather[0].main}</P>
+<p>${fiveDay.list[3].main.temp}°C</p>
+`;
+$('#day-five').html(dayFiveHtml);
 }
 
 
