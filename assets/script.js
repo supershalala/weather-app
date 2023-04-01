@@ -12,6 +12,16 @@ let searchbtn = $("#search-btn");
 $(searchbtn).on("click", function () {
  let cityName = $("#location-input").val();
 
+
+let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+searchHistory.unshift(cityName);
+
+searchHistory = searchHistory.slice(0, 5);
+
+localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+
  console.log(cityName);
  getWeather(cityName);
 
@@ -71,7 +81,7 @@ function get5DayWeather (lat, lon) {
         success: function (fiveDay) {
             display5DayWeather(fiveDay);
             console.log("5 day forecast");
-            // console.log(fiveDay);
+            console.log(fiveDay);
           },
     })
 
@@ -87,7 +97,7 @@ const dayOneHtml = `
 `;
 $('#day-one').html(dayOneHtml);
 const dayTwoHtml = `
-<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[11].weather[0].icon}@2x.png" alt="${fiveDay.list[11].weather[0].description}" />
 <h2>${dayjs(fiveDay.list[11].dt_txt).format('dddd, MMM D')}</h2>
 <p>${fiveDay.list[11].weather[0].main}</P>
 <p>${fiveDay.list[11].main.temp}°C</p>
@@ -95,7 +105,7 @@ const dayTwoHtml = `
 $('#day-two').html(dayTwoHtml);
 
 const dayThreeHtml = `
-<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[19].weather[0].icon}@2x.png" alt="${fiveDay.list[19].weather[0].description}" />
 <h2>${dayjs(fiveDay.list[19].dt_txt).format('dddd, MMM D')}</h2>
 <p>${fiveDay.list[19].weather[0].main}</P>
 <p>${fiveDay.list[19].main.temp}°C</p>
@@ -105,7 +115,7 @@ $('#day-three').html(dayThreeHtml);
 
 
 const dayFourHtml = `
-<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[27].weather[0].icon}@2x.png" alt="${fiveDay.list[27].weather[0].description}" />
 <h2>${dayjs(fiveDay.list[27].dt_txt).format('dddd, MMM D')}</h2>
 
 <p>${fiveDay.list[27].weather[0].main}</P>
@@ -114,7 +124,7 @@ const dayFourHtml = `
 $('#day-four').html(dayFourHtml);
 
 const dayFiveHtml = `
-<img src="https://openweathermap.org/img/wn/${fiveDay.list[3].weather[0].icon}@2x.png" alt="${fiveDay.list[3].weather[0].description}" />
+<img src="https://openweathermap.org/img/wn/${fiveDay.list[35].weather[0].icon}@2x.png" alt="${fiveDay.list[35].weather[0].description}" />
 <h2>${dayjs(fiveDay.list[35].dt_txt).format('dddd, MMM D')}</h2>
 
 <p>${fiveDay.list[35].weather[0].main}</P>
@@ -122,6 +132,19 @@ const dayFiveHtml = `
 `;
 $('#day-five').html(dayFiveHtml);
 }
+
+
+//create button element
+
+for (var i=0; i<searchHistory.length; i++) {
+
+  
+
+}
+
+
+
+
 
 
 
