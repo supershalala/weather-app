@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  const now = dayjs();
+console.log(now.format('YYYY-MM-DD HH:mm:ss'));
+
 
 const apiKey = "d089155c16f56fa0925e220f7c99f4cd";
 
@@ -78,8 +81,8 @@ function get5DayWeather (lat, lon) {
 function display5DayWeather(fiveDay) {
 
 const fiveDayHtml = `
-
-<p>${fiveDay.list[0].dt_txt}</P>
+<h2>${fiveDay.list[2].dt_txt}</h2>
+<p>${fiveDay.list[2].weather[0].main}</P>
 <p>${fiveDay.list[1].main.temp}</p>
 <h1>"hello world"</h1>
 
