@@ -12,6 +12,7 @@ let searchbtn = $("#search-btn");
 $(searchbtn).on("click", function () {
  let cityName = $("#location-input").val();
 
+//  set and get from local storage
 
 let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
@@ -20,6 +21,11 @@ searchHistory.unshift(cityName);
 searchHistory = searchHistory.slice(0, 5);
 
 localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+// create buttons from search history
+
+
+createBtns(searchHistory);
 
 
  console.log(cityName);
@@ -134,14 +140,40 @@ $('#day-five').html(dayFiveHtml);
 }
 
 
-//create button element
+function createBtns (searchHistory) {
+ console.log(searchHistory);
 
-for (var i=0; i<searchHistory.length; i++) {
+ const $hsitoryDiv = $('#search-history')
 
+ $hsitoryDiv.empty()
+
+ for  (i=0; i<searchHistory.length; i++) {
+  if (searchHistory[i] !== null && searchHistory[i] !== undefined && searchHistory[i] !== ''){
+
+  // create a new button element
+  const $button = $('<button>');
+
+
+  $button.addClass("btn");
+  $button.addClass("btn-secondary");
+  $button.addClass("me-2");
+  $button.addClass("my-2");
+
+
+
+
+  // set the button's text to the current item in the searchHistory array
+  $button.text(searchHistory[i]);
+ 
   
+  $hsitoryDiv.append($button);
+ 
 
-}
+  }
 
+
+ }
+};
 
 
 
