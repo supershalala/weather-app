@@ -161,9 +161,7 @@ function createBtns (searchHistory) {
   $button.addClass("btn-secondary");
   $button.addClass("me-2");
   $button.addClass("my-2");
-
-
-
+  $button.addClass("searched-city");
 
   // set the button's text to the current item in the searchHistory array
   $button.text(searchHistory[i]);
@@ -182,7 +180,16 @@ function createBtns (searchHistory) {
  const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
  createBtns(searchHistory);
 
+ $('#search-history').on('click', '.searched-city', function() {
+  // Code to handle the click event
 
+  console.log("you clicked a searched city");
+  let buttonValue = $(this).text();
+  console.log(buttonValue);
+
+  getWeather (buttonValue);
+  
+});
 
 
 
