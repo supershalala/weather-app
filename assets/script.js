@@ -148,9 +148,12 @@ function createBtns (searchHistory) {
  $hsitoryDiv.empty()
 
  for  (i=0; i<searchHistory.length; i++) {
-  if (searchHistory[i] !== null && searchHistory[i] !== undefined && searchHistory[i] !== ''){
+  if (searchHistory[i] !== null &&
+     searchHistory[i] !== undefined && 
+     searchHistory[i] !== '' && 
+     searchHistory.indexOf(searchHistory[i]) === i ){
 
-  // create a new button element
+//  Button element 
   const $button = $('<button>');
 
 
@@ -175,7 +178,9 @@ function createBtns (searchHistory) {
  }
 };
 
-
+ // Call createBtns function on page load
+ const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+ createBtns(searchHistory);
 
 
 
