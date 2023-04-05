@@ -14,18 +14,18 @@ $(searchbtn).on("click", function () {
 
 //  set and get from local storage
 
-let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+// let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
-searchHistory.unshift(cityName);
+// searchHistory.unshift(cityName);
 
-searchHistory = searchHistory.slice(0, 5);
+// searchHistory = searchHistory.slice(0, 5);
 
-localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+// localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 
 // create buttons from search history
 
 
-createBtns(searchHistory);
+// createBtns(searchHistory);
 
 
  console.log(cityName);
@@ -45,10 +45,24 @@ function getWeather(cityName) {
       method: 'GET',
       dataType: 'json',
       success: function (data) {
-        displayWeather(data);
-        console.log(data);
-        get5DayWeather(data.coord.lat, data.coord.lon);
-        console.log(data.coord.lat + data.coord.lon)
+           // Check if the data returned is valid and not an error
+    if (data.cod === 200) {
+      // Set the search history item only if data is valid
+      let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+      searchHistory.unshift(cityName);
+      searchHistory = searchHistory.slice(0, 5);
+      localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+      // Call the displayWeather and get5DayWeather functions
+      displayWeather(data);
+      get5DayWeather(data.coord.lat, data.coord.lon);
+      console.log(data);
+      console.log(data.coord.lat + data.coord.lon)
+      createBtns(searchHistory);
+
+    
+    } 
+      
+       
       },
       error: function (error) {
         console.error(error);
