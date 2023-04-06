@@ -75,12 +75,14 @@ function getWeather(cityName) {
     const weatherHtml = `
       <h2>${data.name}, ${data.sys.country}</h2>
       <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt"${data.weather[0].description}">
+      <p>${data.weather[0].main}</p>
       <p> ${data.main.temp}°C</p>
+
       <p>Min ${data.main.temp_min}°C</p>
       <p>Max ${data.main.temp_max}°C</p>
 
-      <p>Weather: ${data.weather[0].main}</p>
-      <p>Description: ${data.weather[0].description}</p>
+     
+      
       <p>Humidity: ${data.main.humidity}%</p>
       <p>Wind Speed: ${data.wind.speed} m/s</p>
     `;
@@ -114,6 +116,8 @@ const dayOneHtml = `
 <h2>${dayjs(fiveDay.list[3].dt_txt).format('dddd, MMM D')}</h2>
 <p>${fiveDay.list[3].weather[0].main}</P>
 <p>${fiveDay.list[3].main.temp}°C</p>
+<p>Wind Speed ${fiveDay.list[3].wind.speed}m/s</p>
+<p>Humidity ${fiveDay.list[3].main.humidity}%</p>
 `;
 $('#day-one').html(dayOneHtml);
 const dayTwoHtml = `
@@ -121,6 +125,8 @@ const dayTwoHtml = `
 <h2>${dayjs(fiveDay.list[11].dt_txt).format('dddd, MMM D')}</h2>
 <p>${fiveDay.list[11].weather[0].main}</P>
 <p>${fiveDay.list[11].main.temp}°C</p>
+<p>Wind Speed ${fiveDay.list[11].wind.speed}m/s</p>
+<p>Humidity ${fiveDay.list[11].main.humidity}%</p>
 `;
 $('#day-two').html(dayTwoHtml);
 
@@ -129,6 +135,8 @@ const dayThreeHtml = `
 <h2>${dayjs(fiveDay.list[19].dt_txt).format('dddd, MMM D')}</h2>
 <p>${fiveDay.list[19].weather[0].main}</P>
 <p>${fiveDay.list[19].main.temp}°C</p>
+<p>Wind Speed ${fiveDay.list[19].wind.speed}m/s</p>
+<p>Humidity ${fiveDay.list[19].main.humidity}%</p>
 `;
 $('#day-three').html(dayThreeHtml);
 
@@ -140,6 +148,8 @@ const dayFourHtml = `
 
 <p>${fiveDay.list[27].weather[0].main}</P>
 <p>${fiveDay.list[27].main.temp}°C</p>
+<p>Wind Speed ${fiveDay.list[27].wind.speed}m/s</p>
+<p>Humidity ${fiveDay.list[27].main.humidity}%</p>
 `;
 $('#day-four').html(dayFourHtml);
 
@@ -149,6 +159,8 @@ const dayFiveHtml = `
 
 <p>${fiveDay.list[35].weather[0].main}</P>
 <p>${fiveDay.list[35].main.temp}°C</p>
+<p>Wind Speed ${fiveDay.list[35].wind.speed}m/s</p>
+<p>Humidity ${fiveDay.list[35].main.humidity}%</p>
 `;
 $('#day-five').html(dayFiveHtml);
 }
