@@ -25,42 +25,39 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-
     <nav class="navbar bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">
-          <img src="./assets/images/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-centre">
+          <img
+            src="./assets/images/logo.png"
+            alt="Logo"
+            width="50"
+            height="50"
+            class="d-inline-block align-text-centre"
+          />
           Weather App
         </a>
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container text-center">
       <!-- <h1>Weather App</h1> -->
-      <input type="text" id="location-input" placeholder="Enter City Name" />
-      <button id="search-btn" class="btn btn-dark">Search</button>
-
-      <div id="search-history">
-
-
+      <div id="search-input" class="mt-4 row">
+        <div class="input-group col">
+        <input class="form-control " type="text" id="location-input" placeholder="Enter City Name" />
+        <button id="search-btn" class="btn btn-dark">Search</button>
       </div>
+      <div id="search-history" class="col"></div>
+    </div>
+      <div class="weather-info mt-4 mb-2"></div>
 
+      <div class="five-day row mt-3">
+        <div id="day-one" class="col-12 col-md"></div>
 
-      <div class="weather-info">
-
-
-      </div>
-
-      <div class="five-day">
-
-        <div id="day-one"></div>
-
-        <div id="day-two"></div>
-        <div id="day-three"></div>
-        <div id="day-four"></div>
-        <div id="day-five"></div>
-
-        
+        <div id="day-two" class="col-12 col-md"></div>
+        <div id="day-three" class="col-12 col-md"></div>
+        <div id="day-four" class="col-12 col-md"></div>
+        <div id="day-five" class="col-12 col-md"></div>
       </div>
     </div>
 
