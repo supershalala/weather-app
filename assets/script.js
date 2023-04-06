@@ -2,6 +2,18 @@ $(document).ready(function() {
   const now = dayjs();
 console.log(now.format('YYYY-MM-DD HH:mm:ss'));
 
+function displayDate (){
+  const date = `
+ <h2 class="text-warning">${now.format('YYYY-MM-DD')}</h2>
+
+  
+  `;
+  $('#current-date').html(date);
+ 
+};
+
+displayDate();
+
 
 const apiKey = "d089155c16f56fa0925e220f7c99f4cd";
 
@@ -72,7 +84,13 @@ function getWeather(cityName) {
   }
 
   function displayWeather(data) {
+
+    const unixTimestamp = data.dt; // example Unix timestamp
+const date = dayjs.unix(unixTimestamp); // convert Unix timestamp to date
+console.log(date.format('YYYY-MM-DD HH:mm:ss'));
+
     const weatherHtml = `
+    <h2> ${date.format('dddd, MMM D')}</h2>
       <h2>${data.name}, ${data.sys.country}</h2>
       <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt"${data.weather[0].description}">
       <p>${data.weather[0].main}</p>
@@ -87,6 +105,8 @@ function getWeather(cityName) {
       <p>Wind Speed: ${data.wind.speed} m/s</p>
     `;
     $('.weather-info').html(weatherHtml);
+
+    $('.weather-info').addClass('border-bottom');
  
 
   }
@@ -211,6 +231,7 @@ function createBtns (searchHistory) {
 
   console.log("you clicked a searched city");
   let buttonValue = $(this).text();
+
   console.log(buttonValue);
 
   getWeather (buttonValue);
